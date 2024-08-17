@@ -29,7 +29,7 @@ ChartJS.register(
 );
 
 export default {
-  name: "App",
+  name: "LineChart",
   components: {
     Line,
   },

@@ -21,7 +21,7 @@
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
   
   export default {
-    name: 'App',
+    name: 'BarChart',
     components: {
       Bar
     },

@@ -4,22 +4,28 @@
       <!-- Line Chart -->
       <div>
         <h3 class="font-semibold text-lg text-neutral-500">Line Chart</h3>
-        <LineChart v-if="isCurrentPriority(1)" @rendered="updatePriority(2)" />
+        <LineChart
+          v-if="isCurrentPriority(Priority.FIRST)"
+          @rendered="updatePriority(Priority.SECOND)"
+        />
       </div>
 
       <!-- Donut Chart -->
       <div class="mt-7">
         <h3 class="font-semibold text-lg text-neutral-500">Donut Chart</h3>
         <DonutsChart
-          v-if="isCurrentPriority(2)"
-          @rendered="updatePriority(3)"
+          v-if="isCurrentPriority(Priority.SECOND)"
+          @rendered="updatePriority(Priority.THIRD)"
         />
       </div>
 
       <!-- Column Chart -->
       <div class="mt-7">
         <h3 class="font-semibold text-lg text-neutral-500">Column Chart</h3>
-        <BarChart v-if="isCurrentPriority(3)" @rendered="updatePriority(4)" />
+        <BarChart
+          v-if="isCurrentPriority(Priority.THIRD)"
+          @rendered="updatePriority(Priority.THIRD)"
+        />
       </div>
     </div>
   </div>
@@ -30,12 +36,23 @@ import LineChart from "../components/LineChart.vue";
 import DonutsChart from "../components/DonutsChart.vue";
 import BarChart from "../components/BarChart.vue";
 
+const Priority = {
+  FIRST: 1,
+  SECOND: 2,
+  THIRD: 3,
+};
+
 export default {
   components: { LineChart, DonutsChart, BarChart },
   data() {
     return {
-      priority: 1,
+      priority: Priority.FIRST,
     };
+  },
+  computed: {
+    Priority() {
+      return Priority;
+    },
   },
   methods: {
     /**
